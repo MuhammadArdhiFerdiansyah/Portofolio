@@ -84,6 +84,7 @@ body {
     position: absolute;
     top: calc(100% + 5px);
     right: 0;
+    z-index: 101;
     background-color: #182e6e;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
@@ -150,20 +151,21 @@ body {
 
 /* Sections */
 section[id] {
-  scroll-margin-top: 60px;
+  scroll-margin-top: 70px;
 }
-.about, .testimonials {
+.about, .services, .portfolio, .testimonials, .contact {
   padding: 4rem 2rem;
   text-align: center;
 }
 .services, .portfolio, .contact {
-  padding: 4rem 0;
-  text-align: center;
+    padding-left: 0;
+    padding-right: 0;
 }
 h2 {
     font-size: 2.2rem;
     font-weight: 500;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    margin-top: 0;
 }
 
 /* About & Testimonials Text Wrap Fix */
@@ -194,10 +196,15 @@ h2 {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  justify-content: flex-start;
   align-items: center;
   gap: 2.5rem;
-  padding: 2rem 3rem;
+  padding: 2rem 0;
+}
+/* Trik untuk centering scroll container */
+.service-logos::before,
+.service-logos::after {
+    content: '';
+    margin: auto;
 }
 .service-logos::-webkit-scrollbar { height: 8px; }
 .service-logos::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
@@ -224,6 +231,8 @@ h2 {
 .portfolio-slider {
   width: 100%; 
   margin: 2rem 0;
+  padding: 0 50px; /* Padding untuk tombol navigasi */
+  box-sizing: border-box;
 }
 .swiper-slide {
   background: #ffffff;
@@ -343,15 +352,14 @@ footer {
 
 /* --- ATURAN RESPONSIVE (MOBILE) - DIPERBARUI TOTAL --- */
 @media (max-width: 768px) {
-  /* Perkecil padding utama navbar dan atasi overflow */
   .navbar { 
     padding: 0.5rem 1rem; 
   }
+  .logo img {
+    height: 24px; /* Perkecil logo di mobile */
+  }
   .nav-container { 
-    gap: 1rem;
-    /* Memastikan container tidak melebihi layar */
-    width: auto;
-    overflow: hidden;
+    gap: 0.5rem;
   }
   .navbar nav {
     gap: 0.5rem;
@@ -362,10 +370,8 @@ footer {
   }
   .lang-switcher {
     transform: scale(0.9);
-    padding-left: 0.5rem;
   }
 
-  /* Perkecil font di seluruh halaman */
   .hero h1 {
     font-size: 1.8rem;
   }
@@ -375,49 +381,43 @@ footer {
   h2 {
     font-size: 1.6rem;
   }
-  body, p {
-    font-size: 0.95rem;
-  }
 
-  /* Aturan umum untuk semua section di mobile */
   .about, .services, .portfolio, .testimonials, .contact {
-    padding: 3rem 1rem;
+    padding: 3rem 1.5rem;
   }
   .services, .portfolio, .contact {
     padding-left: 0;
     padding-right: 0;
   }
   .about .text, .testimonials {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0;
+    padding-right: 0;
   }
   
-  /* Atur ulang service-logos untuk mobile */
   .service-logos {
-    padding: 2rem 1rem;
-    gap: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
-  /* Aturan slide portofolio untuk mobile */
+  /* Perbaikan Slider Portofolio Mobile */
+  .portfolio-slider {
+    padding: 0; /* Hapus padding agar slide bisa full-width */
+  }
   .swiper-slide {
     flex-direction: column;
     text-align: center;
     min-height: auto;
+    width: 100%; /* Pastikan slide mengambil lebar penuh */
+    margin: 0;
   }
   .swiper-button-next, .swiper-button-prev { 
-    display: none; /* Sembunyikan panah, andalkan swipe */
-  }
-  .portfolio-item-slide {
-      margin: 0 auto; /* Pusatkan slide */
-      width: 90% !important; /* Lebar slide 90% dari layar */
+    display: none;
   }
   .portfolio-image { 
     width: 100%; 
-    flex-basis: auto; 
-    align-self: auto; 
   }
   .portfolio-image img { 
-    height: 200px; /* Sedikit lebih kecil */
+    height: 220px; 
   }
   .portfolio-info { 
     text-align: center; 
@@ -426,10 +426,5 @@ footer {
   }
   .portfolio-info h3 {
     font-size: 1.2rem;
-  }
-  .portfolio-final-slide { 
-    width: 90% !important;
-    margin: 0 auto;
-    padding: 1.5rem; 
   }
 }
