@@ -166,19 +166,87 @@ h2 { font-size: 2.2rem; font-weight: 500; margin-bottom: 2.5rem; margin-top: 0; 
 .service-logos img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; background-color: #FFA000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease; flex-shrink: 0; }
 .service-logos img:hover { transform: scale(1.1); }
 
-/* Portfolio -- DESAIN BARU DENGAN DUA VERSI -- */
-.portfolio { background-color: #f8f9fa; background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%); position: relative; padding-bottom: 5rem; }
-.portfolio-slider { width: 100%; margin: 2rem 0; padding: 0; z-index: 1; }
-.swiper-slide { background: transparent !important; box-shadow: none; min-height: 450px; height: auto; }
-.slide-content-wrapper { display: flex; align-items: stretch; max-width: 1200px; margin: 0 auto; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; }
-.portfolio-image { flex: 0 0 50%; }
-.portfolio-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.portfolio-info { flex: 1; padding: 3rem 4rem; text-align: left; display: flex; flex-direction: column; justify-content: center; }
-.portfolio-info h3 { margin-top: 0; color: #0b1b3f; font-size: 1.8rem; }
-.portfolio-info p { font-size: 1.1rem; line-height: 1.7; }
-.portfolio-final-slide { background: transparent !important; box-shadow: none; display: flex; justify-content: center; align-items: center; }
-.final-slide-content { max-width: 600px; text-align: center; background: #e9ecef; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.portfolio .swiper-button-next, .portfolio .swiper-button-prev { color: #0b1b3f; top: 50%; }
+/* Portfolio -- DESAIN FULL-WIDTH (DIPERBAIKI) -- */
+.portfolio {
+  background-color: #f8f9fa;
+  background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%);
+  position: relative;
+  padding-bottom: 5rem;
+}
+.portfolio-slider {
+  width: 100%;
+  margin: 2rem 0;
+  padding: 0;
+  z-index: 1;
+}
+/* Slide dibuat transparan, yang diatur adalah konten di dalamnya */
+.swiper-slide {
+  background: transparent !important;
+  box-shadow: none !important;
+  min-height: 450px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Ini adalah 'kartu' putih yang ada di tengah slide */
+.slide-content-wrapper {
+  display: flex;
+  align-items: stretch;
+  width: 90%; /* Lebar kartu 90% dari layar */
+  max-width: 1100px; /* Lebar maksimal kartu */
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.portfolio-image {
+  flex: 0 0 50%;
+}
+.portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.portfolio-info {
+  flex: 1;
+  padding: 2rem 3rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.portfolio-info h3 {
+  margin-top: 0;
+  color: #0b1b3f;
+  font-size: 1.8rem;
+}
+.portfolio-info p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.portfolio-final-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.final-slide-content {
+  max-width: 600px;
+  text-align: center;
+  background: #e9ecef;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.portfolio .swiper-button-next, .portfolio .swiper-button-prev {
+  color: #0b1b3f;
+  top: 50%;
+}
 .portfolio .swiper-button-prev { left: 2rem; }
 .portfolio .swiper-button-next { right: 2rem; }
 .swiper-pagination-bullet-active { background: #0b1b3f; }
@@ -216,16 +284,14 @@ footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
   .about .text, .testimonials { padding: 0 1rem; }
   .service-logos { padding: 2rem 1.5rem; }
   
-  /* Aturan Portofolio di Mobile (Menjadi Terpusat) */
   .portfolio-slider { padding: 0; }
-  .slide-content-wrapper { flex-direction: column; text-align: center; width: 90%; max-width: 400px; border-radius: 12px; }
-  .swiper-slide { background: transparent !important; box-shadow: none !important; min-height: auto; align-items: flex-start;}
+  .slide-content-wrapper { flex-direction: column; text-align: center; width: 90%; }
+  .swiper-slide { min-height: auto; }
   .swiper-button-next, .swiper-button-prev { display: none; }
   .portfolio-image { width: 100%; min-height: 220px; }
   .portfolio-image img { height: 220px; }
   .portfolio-info { text-align: center; padding: 1.5rem; }
   .portfolio-final-slide { min-height: auto; }
   .final-slide-content { padding: 2rem 1.5rem; }
-
   .contact-links { grid-template-columns: 1fr 1fr; gap: 1rem; }
 }
