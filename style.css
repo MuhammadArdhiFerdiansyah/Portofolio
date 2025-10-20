@@ -75,9 +75,11 @@ body.sidebar-open {
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
+    min-width: 60px; /* Lebar minimum agar tidak aneh saat ganti teks */
 }
 .lang-menu-button i {
     transition: transform 0.3s ease;
+    margin-left: auto;
 }
 .lang-switcher.open .lang-menu-button i {
     transform: rotate(180deg);
@@ -112,10 +114,18 @@ body.sidebar-open {
     text-align: left;
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
+    transition: background-color 0.3s ease;
 }
 .lang-dropdown button:hover {
     background-color: rgba(108, 192, 255, 0.2);
 }
+/* Gaya untuk tombol bahasa yang aktif */
+.lang-dropdown button.active {
+    background-color: #6cc0ff;
+    color: #0b1b3f;
+    font-weight: 500;
+}
+
 
 /* Hamburger Menu & Sidebar (Mobile) */
 .hamburger-menu {
@@ -259,7 +269,6 @@ h2 {
   gap: 2.5rem;
   padding: 2rem 0;
 }
-/* Trik untuk centering scroll container */
 .service-logos::before,
 .service-logos::after {
     content: '';
@@ -335,6 +344,7 @@ h2 {
   max-width: 600px;
   text-align: center;
 }
+
 .swiper-button-next,
 .swiper-button-prev {
   color: #0b1b3f;
@@ -392,18 +402,13 @@ footer {
 @media (max-width: 768px) {
   .nav-container { display: none; }
   .hamburger-menu { display: block; }
-
   .navbar { padding: 0.5rem 1.5rem; }
-  
   h1 { font-size: 2rem; }
   h2 { font-size: 1.8rem; }
   .hero-subtitle { font-size: 1rem; }
-  
   .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 1.5rem; }
   .about .text, .testimonials { padding: 0; }
-
   .service-logos { padding: 2rem 1.5rem; }
-  
   .portfolio-slider { padding: 0; }
   .swiper-slide { flex-direction: column; text-align: center; min-height: auto; }
   .swiper-button-next, .swiper-button-prev { display: none; }
@@ -411,7 +416,6 @@ footer {
   .portfolio-image { width: 100%; }
   .portfolio-image img { height: 220px; }
   .portfolio-info { text-align: center; padding: 1.5rem; }
-  
   .contact-links {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
