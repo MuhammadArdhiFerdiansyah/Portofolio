@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LOGIKA UNTUK SLIDER PORTFOLIO (SWIPER.JS) ---
     const swiper = new Swiper('.portfolio-slider', {
-        slidesPerView: 1, // Hanya satu slide terlihat
-        spaceBetween: 0, // Tidak ada jarak antar slide untuk full-width
+        slidesPerView: 1,
+        spaceBetween: 30,
         loop: false,
         grabCursor: true,
         pagination: {
