@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
@@ -36,14 +35,36 @@
             </div>
         </div>
     </div>
+    <button class="hamburger-menu" aria-label="Open Menu">
+        <i class="fas fa-bars"></i>
+    </button>
   </header>
+
+  <div class="mobile-sidebar">
+    <nav class="mobile-nav">
+        <a href="#about" data-key="navAbout">About</a>
+        <a href="#services" data-key="navServices">Services</a>
+        <a href="#portfolio" data-key="navPortfolio">Portfolio</a>
+        <a href="#contact" data-key="navContact">Contact</a>
+    </nav>
+    <div class="lang-switcher">
+        <button class="lang-menu-button">
+            <span id="lang-display-mobile">EN</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="lang-dropdown">
+            <button data-lang="en">EN</button>
+            <button data-lang="id">ID</button>
+        </div>
+    </div>
+  </div>
+  <div class="overlay"></div>
 
   <section id="hero" class="hero fade-in">
     <h1 data-key="heroTitle">Hi, I'm <span>MUHAMMAD ARDHI FERDIANSYAH</span></h1>
     <p class="hero-subtitle" data-key="heroSubtitle">Data Entry & Virtual Assistant / Admin Support</p>
     <a class="btn" href="https://www.upwork.com/freelancers/~0152505a22947bd4f6" target="_blank" data-key="heroButton">Hire Me on Upwork</a>
   </section>
-
   <section id="about" class="about slide-up">
     <img src="assets/profile-placeholder.png" alt="Profile" class="profile" />
     <div class="text">
@@ -56,7 +77,6 @@ I also have a strong willingness to learn and enjoy exploring new skills to impr
       </p>
     </div>
   </section>
-
   <section id="services" class="services fade-up">
     <h2 data-key="servicesTitle">My Services</h2>
     <div class="service-logos">
@@ -70,7 +90,6 @@ I also have a strong willingness to learn and enjoy exploring new skills to impr
         <img src="assets/web-research.png" alt="Web Research" title="Web Research">
     </div>
   </section>
-
   <section id="portfolio" class="portfolio">
     <h2 data-key="portfolioTitle">Portfolio</h2>
     <div class="swiper portfolio-slider">
@@ -133,17 +152,15 @@ I also have a strong willingness to learn and enjoy exploring new skills to impr
         </div>
       </div>
       <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
     </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
   </section>
-
   <section id="testimonials" class="testimonials fade-up">
     <h2 data-key="testimonialsTitle">Testimonials</h2>
     <p data-key="testimonialsText">"I am currently building my professional experience and open to collaborating with my first clients. I’m committed to delivering the best results and truly appreciate any feedback or testimonials given."</p>
     <p class="author">— Ardhi</p>
   </section>
-
   <section id="contact" class="contact">
     <div class="contact-content">
       <h2 data-key="contactTitle">Contact Me</h2>
@@ -156,11 +173,9 @@ I also have a strong willingness to learn and enjoy exploring new skills to impr
       </div>
     </div>
   </section>
-
   <footer>
     <p>© 2025 Ardhi Works. All rights reserved.</p>
   </footer>
-
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
