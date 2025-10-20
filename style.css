@@ -166,72 +166,21 @@ h2 { font-size: 2.2rem; font-weight: 500; margin-bottom: 2.5rem; margin-top: 0; 
 .service-logos img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; background-color: #FFA000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease; flex-shrink: 0; }
 .service-logos img:hover { transform: scale(1.1); }
 
-/* Portfolio -- DESAIN FINAL (Desktop & Mobile) -- */
-.portfolio {
-  background-color: #f8f9fa;
-  background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%);
-  position: relative;
-}
-.portfolio h2 {
-    padding: 0 2rem;
-}
-.portfolio-slider {
-  width: 100%; 
-  margin: 2rem 0;
-  padding: 0;
-  z-index: 1;
-}
-/* DESAIN DESKTOP: FULL-WIDTH, SIDE-BY-SIDE */
-.swiper-slide {
-  display: flex;
-  align-items: stretch; /* Membuat gambar dan info sama tinggi */
-  background: #ffffff;
-  min-height: 450px;
-  box-shadow: none;
-  border-radius: 0;
-}
-.portfolio-image {
-  flex: 0 0 50%;
-}
-.portfolio-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.portfolio-info {
-  flex: 1;
-  padding: 2rem 4rem;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-}
-.portfolio-info h3 {
-  margin-top: 0;
-  color: #0b1b3f;
-}
-.portfolio-final-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background: #e9ecef;
-}
-.final-slide-content {
-  max-width: 600px;
-  text-align: center;
-}
-.portfolio .swiper-button-next,
-.portfolio .swiper-button-prev {
-  color: #0b1b3f;
-}
+/* Portfolio */
+.portfolio { background-color: #f8f9fa; background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%); position: relative; }
+.portfolio-slider { width: 100%; margin: 2rem 0; padding: 0; z-index: 1; }
+.swiper-slide { background: transparent !important; box-shadow: none !important; min-height: 450px; height: auto; display: flex; justify-content: center; align-items: center;}
+.slide-content-wrapper { display: flex; align-items: stretch; width: 90%; max-width: 1100px; margin: 0 auto; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; }
+.portfolio-image { flex: 0 0 50%; }
+.portfolio-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portfolio-info { flex: 1; padding: 2rem 3rem; text-align: left; display: flex; flex-direction: column; justify-content: center; }
+.portfolio-info h3 { margin-top: 0; color: #0b1b3f; }
+.portfolio-final-slide { background: transparent !important; box-shadow: none !important; }
+.final-slide-content { max-width: 600px; text-align: center; background: #e9ecef; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.portfolio .swiper-button-next, .portfolio .swiper-button-prev { color: #0b1b3f; top: 50%; }
 .portfolio .swiper-button-prev { left: 2rem; }
 .portfolio .swiper-button-next { right: 2rem; }
-.swiper-pagination-bullet-active {
-  background: #0b1b3f;
-}
+.swiper-pagination-bullet-active { background: #0b1b3f; }
 
 /* Testimonials & Contact */
 .testimonials { background: #ffffff; font-style: italic; }
@@ -249,12 +198,12 @@ footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
 /* Animations */
 .fade-in { animation: fadeIn 1.5s ease; }
 .slide-up { animation: slideUp 1.s ease; }
-.fade-up { animation: fadeUp 1.s ease; }
+.fade-up { animation: fadeUp 1.5s ease; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-/* --- ATURAN RESPONSIVE (MOBILE) --- */
+/* --- ATURAN RESPONSIVE (MOBILE) - PERBAIKAN FINAL --- */
 @media (max-width: 768px) {
   .nav-container { display: none; }
   .hamburger-menu { display: block; }
@@ -262,24 +211,18 @@ footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
   h1 { font-size: 2rem; }
   h2 { font-size: 1.8rem; }
   .hero-subtitle { font-size: 1rem; }
-  .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 1.5rem; }
-  .about .text, .testimonials { padding: 0 1rem; }
-  .service-logos { padding: 2rem 1.5rem; }
+  .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 0; } /* Hapus padding horizontal section */
+  .about .text, .testimonials, .portfolio h2 { padding-left: 1.5rem; padding-right: 1.5rem; }
   
-  /* DESAIN MOBILE: KARTU TERPUSAT, STACKED */
-  .portfolio-slider { padding: 0 1rem; box-sizing: border-box; }
-  .swiper-slide {
-    flex-direction: column;
-    text-align: center;
-    min-height: auto;
-    border-radius: 12px; /* Kembalikan radius di mobile */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* Kembalikan shadow di mobile */
-  }
+  /* Portfolio Mobile: Full-Width, Stacked */
+  .portfolio-slider { padding: 0; }
+  .slide-content-wrapper { display: block; width: 100%; max-width: 100%; border-radius: 0; box-shadow: none; }
+  .swiper-slide { min-height: auto; background: #ffffff !important; box-shadow: none !important; border-radius: 0 !important; }
   .swiper-button-next, .swiper-button-prev { display: none; }
-  .portfolio-image { width: 100%; max-width: 100%; }
-  .portfolio-image img { height: 220px; }
-  .portfolio-info { width: 100%; max-width: 100%; padding: 1.5rem; text-align: center; }
-  .portfolio-final-slide { min-height: auto; }
-  
+  .portfolio-image { width: 100%; }
+  .portfolio-image img { height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .portfolio-info { text-align: center; padding: 1.5rem; }
+  .portfolio-final-slide { min-height: auto; background: #e9ecef !important; }
+  .final-slide-content { padding: 2rem 1.5rem; }
   .contact-links { grid-template-columns: 1fr 1fr; gap: 1rem; }
 }
