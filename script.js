@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', toggleSidebar);
     });
 
-    // --- LOGIKA UNTUK SLIDER PORTFOLIO (SWIPER.JS) - DIPERBAIKI ---
+    // --- LOGIKA UNTUK SLIDER PORTFOLIO (SWIPER.JS) ---
     const swiper = new Swiper('.portfolio-slider', {
-        slidesPerView: 1, // KEMBALIKAN KE 1 UNTUK MENAMPILKAN SATU SLIDE
+        slidesPerView: 1,
         spaceBetween: 30,
         loop: false,
         grabCursor: true,
@@ -68,14 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const translatableElements = document.querySelectorAll('[data-key]');
     const langDisplays = [document.getElementById('lang-display'), document.getElementById('lang-display-mobile')];
     
-    // Kamus Terjemahan (tidak berubah)
     const translations = {
         en: {
             navAbout: "About",
             navServices: "Services",
             navPortfolio: "Portfolio",
             navContact: "Contact",
-            navLanguage: "Language",
             heroTitle: "Hi, I'm <span>MUHAMMAD ARDHI FERDIANSYAH</span>",
             heroSubtitle: "Data Entry & Virtual Assistant / Admin Support",
             heroButton: "Hire Me on Upwork",
@@ -111,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navServices: "Layanan",
             navPortfolio: "Portofolio",
             navContact: "Kontak",
-            navLanguage: "Bahasa",
             heroTitle: "Hai, saya <span>MUHAMMAD ARDHI FERDIANSYAH</span>",
             heroSubtitle: "Entri Data & Asisten Virtual / Dukungan Admin",
             heroButton: "Rekrut Saya di Upwork",
