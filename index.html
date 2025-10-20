@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
@@ -35,36 +36,14 @@
             </div>
         </div>
     </div>
-    <button class="hamburger-menu" aria-label="Open Menu">
-        <i class="fas fa-bars"></i>
-    </button>
   </header>
-
-  <div class="mobile-sidebar">
-    <nav class="mobile-nav">
-        <a href="#about" data-key="navAbout">About</a>
-        <a href="#services" data-key="navServices">Services</a>
-        <a href="#portfolio" data-key="navPortfolio">Portfolio</a>
-        <a href="#contact" data-key="navContact">Contact</a>
-    </nav>
-    <div class="lang-switcher">
-        <button class="lang-menu-button">
-            <span id="lang-display-mobile">EN</span>
-            <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="lang-dropdown">
-            <button data-lang="en">EN</button>
-            <button data-lang="id">ID</button>
-        </div>
-    </div>
-  </div>
-  <div class="overlay"></div>
 
   <section id="hero" class="hero fade-in">
     <h1 data-key="heroTitle">Hi, I'm <span>MUHAMMAD ARDHI FERDIANSYAH</span></h1>
     <p class="hero-subtitle" data-key="heroSubtitle">Data Entry & Virtual Assistant / Admin Support</p>
     <a class="btn" href="https://www.upwork.com/freelancers/~0152505a22947bd4f6" target="_blank" data-key="heroButton">Hire Me on Upwork</a>
   </section>
+
   <section id="about" class="about slide-up">
     <img src="assets/profile-placeholder.png" alt="Profile" class="profile" />
     <div class="text">
@@ -77,6 +56,7 @@ I also have a strong willingness to learn and enjoy exploring new skills to impr
       </p>
     </div>
   </section>
+
   <section id="services" class="services fade-up">
     <h2 data-key="servicesTitle">My Services</h2>
     <div class="service-logos">
@@ -90,72 +70,59 @@ I also have a strong willingness to learn and enjoy exploring new skills to impr
         <img src="assets/web-research.png" alt="Web Research" title="Web Research">
     </div>
   </section>
+
   <section id="portfolio" class="portfolio">
     <h2 data-key="portfolioTitle">Portfolio</h2>
     <div class="swiper portfolio-slider">
       <div class="swiper-wrapper">
         <div class="swiper-slide portfolio-item-slide">
-          <div class="slide-content-wrapper">
-            <div class="portfolio-image"><img src="assets/portfolio-1.jpg" alt="Portfolio 1"></div>
-            <div class="portfolio-info">
-              <h3 data-key="p1Title">Data Cleaning</h3>
-              <p data-key="p1Desc">Cleaned messy CSV data and organized it into a neat and structured table for reporting purposes. In this example, I used a global freelancer dataset and reformatted it using Microsoft Excel to make it easier to read and analyze.</p>
-            </div>
+          <div class="portfolio-image"><img src="assets/portfolio-1.jpg" alt="Portfolio 1"></div>
+          <div class="portfolio-info">
+            <h3 data-key="p1Title">Data Cleaning</h3>
+            <p data-key="p1Desc">Cleaned messy CSV data and organized it into a neat and structured table for reporting purposes. In this example, I used a global freelancer dataset and reformatted it using Microsoft Excel to make it easier to read and analyze.</p>
           </div>
         </div>
         <div class="swiper-slide portfolio-item-slide">
-          <div class="slide-content-wrapper">
-            <div class="portfolio-image"><img src="assets/portfolio-2.jpg" alt="Portfolio 2"></div>
-            <div class="portfolio-info">
-              <h3 data-key="p2Title">PDF to Excel</h3>
-              <p data-key="p2Desc">Converted and structured data from PDF files into Excel with accuracy and consistency. This project uses IMF data (Global Economy: Tenuous Resilience amid Persistent Uncertainty). I extracted the data using Microsoft Power BI, then organized it in Excel for clearer presentation and analysis.</p>
-            </div>
+          <div class="portfolio-image"><img src="assets/portfolio-2.jpg" alt="Portfolio 2"></div>
+          <div class="portfolio-info">
+            <h3 data-key="p2Title">PDF to Excel</h3>
+            <p data-key="p2Desc">Converted and structured data from PDF files into Excel with accuracy and consistency. This project uses IMF data (Global Economy: Tenuous Resilience amid Persistent Uncertainty). I extracted the data using Microsoft Power BI, then organized it in Excel for clearer presentation and analysis.</p>
           </div>
         </div>
         <div class="swiper-slide portfolio-item-slide">
-          <div class="slide-content-wrapper">
-            <div class="portfolio-image"><img src="assets/portfolio-3.jpg" alt="Portfolio 3"></div>
-            <div class="portfolio-info">
-              <h3 data-key="p3Title">Web Research</h3>
-              <p data-key="p3Desc">Collected company information from various online sources, including websites, social media, email, and phone numbers. In this example, I researched 15 cafés in Jakarta, Indonesia, and compiled their details such as name, address, Instagram account, Google Maps link, and café type into an Excel sheet.</p>
-            </div>
+          <div class="portfolio-image"><img src="assets/portfolio-3.jpg" alt="Portfolio 3"></div>
+          <div class="portfolio-info">
+            <h3 data-key="p3Title">Web Research</h3>
+            <p data-key="p3Desc">Collected company information from various online sources, including websites, social media, email, and phone numbers. In this example, I researched 15 cafés in Jakarta, Indonesia, and compiled their details such as name, address, Instagram account, Google Maps link, and café type into an Excel sheet.</p>
           </div>
         </div>
         <div class="swiper-slide portfolio-item-slide">
-          <div class="slide-content-wrapper">
             <div class="portfolio-image"><img src="assets/portfolio-4.jpg" alt="Portfolio 4"></div>
             <div class="portfolio-info">
                 <h3 data-key="p4Title">Weekly Report</h3>
                 <p data-key="p4Desc">Created a weekly report template to help companies monitor project progress. This example uses fictional data, with a report format I designed myself to display weekly activities and status updates in an organized way.</p>
             </div>
-          </div>
         </div>
         <div class="swiper-slide portfolio-item-slide">
-          <div class="slide-content-wrapper">
             <div class="portfolio-image"><img src="assets/portfolio-5.jpg" alt="Portfolio 5"></div>
             <div class="portfolio-info">
                 <h3 data-key="p5Title">Organized Schedule</h3>
                 <p data-key="p5Desc">Managed and arranged meeting schedules for company or client activities. This example uses a fictional client meeting schedule that I structured in a calendar-style format — suitable for administrative or virtual assistant roles.</p>
             </div>
-          </div>
         </div>
         <div class="swiper-slide portfolio-item-slide">
-          <div class="slide-content-wrapper">
             <div class="portfolio-image"><img src="assets/portfolio-6.jpg" alt="Portfolio 6"></div>
             <div class="portfolio-info">
                 <h3 data-key="p6Title">Data Categorizing / Tagging</h3>
                 <p data-key="p6Desc">Classified product data and added relevant tags for easier analysis and organization. In this project, I used 200 product entries from an Amazon store and assigned each item with appropriate categories and tags for better data grouping.</p>
             </div>
-          </div>
         </div>
         <div class="swiper-slide portfolio-item-slide">
-          <div class="slide-content-wrapper">
             <div class="portfolio-image"><img src="assets/portfolio-7.jpg" alt="Portfolio 7"></div>
             <div class="portfolio-info">
                 <h3 data-key="p7Title">Data Crosscheck</h3>
                 <p data-key="p7Desc">Verified and compared data across multiple datasets to ensure accuracy and consistency. In this example, I compared movie lists from IMDb for the years 2023 and 2024 to identify duplicates and differences using Excel formulas such as VLOOKUP and COUNTIF.</p>
             </div>
-          </div>
         </div>
         <div class="swiper-slide portfolio-final-slide">
           <div class="final-slide-content">
@@ -166,15 +133,17 @@ I also have a strong willingness to learn and enjoy exploring new skills to impr
         </div>
       </div>
       <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
   </section>
+
   <section id="testimonials" class="testimonials fade-up">
     <h2 data-key="testimonialsTitle">Testimonials</h2>
     <p data-key="testimonialsText">"I am currently building my professional experience and open to collaborating with my first clients. I’m committed to delivering the best results and truly appreciate any feedback or testimonials given."</p>
     <p class="author">— Ardhi</p>
   </section>
+
   <section id="contact" class="contact">
     <div class="contact-content">
       <h2 data-key="contactTitle">Contact Me</h2>
@@ -187,9 +156,11 @@ I also have a strong willingness to learn and enjoy exploring new skills to impr
       </div>
     </div>
   </section>
+
   <footer>
     <p>© 2025 Ardhi Works. All rights reserved.</p>
   </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
