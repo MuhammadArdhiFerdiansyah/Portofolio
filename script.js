@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- LOGIKA UNTUK GANTI BAHASA ---
     const langSwitchers = document.querySelectorAll('.lang-switcher');
     const translatableElements = document.querySelectorAll('[data-key]');
+    const langDisplays = [document.getElementById('lang-display'), document.getElementById('lang-display-mobile')];
     
     // Kamus Terjemahan
     const translations = {
@@ -70,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navServices: "Services",
             navPortfolio: "Portfolio",
             navContact: "Contact",
-            navLanguage: "Language",
             heroTitle: "Hi, I'm <span>MUHAMMAD ARDHI FERDIANSYAH</span>",
             heroSubtitle: "Data Entry & Virtual Assistant / Admin Support",
             heroButton: "Hire Me on Upwork",
@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navServices: "Layanan",
             navPortfolio: "Portofolio",
             navContact: "Kontak",
-            navLanguage: "Bahasa",
             heroTitle: "Hai, saya <span>MUHAMMAD ARDHI FERDIANSYAH</span>",
             heroSubtitle: "Entri Data & Asisten Virtual / Dukungan Admin",
             heroButton: "Rekrut Saya di Upwork",
@@ -146,6 +145,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.innerHTML = translations[lang][key];
             }
         });
+        
+        // Update tampilan tombol dropdown utama
+        langDisplays.forEach(display => {
+            if (display) {
+                display.textContent = lang.toUpperCase();
+            }
+        });
+
+        // Update tombol aktif di dalam dropdown
+        langSwitchers.forEach(switcher => {
+            const optionButtons = switcher.querySelectorAll('.lang-dropdown button');
+            optionButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        });
+
         localStorage.setItem('lang', lang);
     };
 
@@ -155,12 +173,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         menuButton.addEventListener('click', (e) => {
             e.stopPropagation();
+            // Tutup dropdown lain sebelum membuka yang ini
+            langSwitchers.forEach(s => {
+                if (s !== switcher) s.classList.remove('open');
+            });
             switcher.classList.toggle('open');
         });
 
         optionButtons.forEach(button => {
             button.addEventListener('click', () => {
                 setLanguage(button.dataset.lang);
+                // Menutup semua dropdown
                 langSwitchers.forEach(s => s.classList.remove('open'));
             });
         });
