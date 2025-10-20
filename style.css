@@ -124,7 +124,6 @@ body.sidebar-open {
     font-weight: 500;
 }
 
-
 /* Hamburger Menu & Sidebar (Mobile) */
 .hamburger-menu {
     display: none;
@@ -293,22 +292,23 @@ h2 {
 .portfolio {
   background-color: #f8f9fa;
   background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%);
-  position: relative; /* Wajib untuk positioning tombol panah */
+  position: relative;
 }
 .portfolio-slider {
-  width: 100%; 
-  margin: 2rem 0;
-  padding: 0; /* Padding dihapus agar slider full-width */
+  max-width: 1000px; /* Batasi lebar slider di desktop */
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 50px; /* Jarak untuk panah navigasi */
+  box-sizing: border-box;
   z-index: 1;
 }
 .swiper-slide {
-  background: #ffffff;
+  background: #ffffff !important; /* Paksa background putih */
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   overflow: hidden;
   min-height: 400px;
-  width: 80%; /* Lebar slide 80% */
-  max-width: 900px; /* Lebar maksimum slide */
+  /* Hapus semua width dan margin manual */
 }
 .portfolio-item-slide {
   display: flex;
@@ -345,16 +345,9 @@ h2 {
   text-align: center;
 }
 
-/* Posisi baru untuk tombol panah */
-.portfolio .swiper-button-next,
-.portfolio .swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
   color: #0b1b3f;
-}
-.portfolio .swiper-button-prev {
-    left: 2rem;
-}
-.portfolio .swiper-button-next {
-    right: 2rem;
 }
 .swiper-pagination-bullet-active {
   background: #0b1b3f;
@@ -414,10 +407,10 @@ footer {
   h2 { font-size: 1.8rem; }
   .hero-subtitle { font-size: 1rem; }
   .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 1.5rem; }
-  .about .text, .testimonials { padding: 0; }
+  .about .text, .testimonials { padding: 0 1rem; }
   .service-logos { padding: 2rem 1.5rem; }
-  .portfolio-slider { padding: 0; }
-  .swiper-slide { flex-direction: column; text-align: center; min-height: auto; width: 90% !important; }
+  .portfolio-slider { padding: 0; max-width: 100%;}
+  .swiper-slide { flex-direction: column; text-align: center; min-height: auto; }
   .swiper-button-next, .swiper-button-prev { display: none; }
   .portfolio-image { width: 100%; }
   .portfolio-image img { height: 220px; }
