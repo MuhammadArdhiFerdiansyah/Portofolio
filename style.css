@@ -83,7 +83,7 @@ body.sidebar-open {
 .lang-dropdown {
     position: absolute;
     top: calc(100% + 5px);
-    right: 0;
+    left: 0;
     background-color: #182e6e;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
