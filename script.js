@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', toggleSidebar);
     });
 
-    // --- LOGIKA UNTUK SLIDER PORTFOLIO (SWIPER.JS) ---
+    // --- LOGIKA UNTUK SLIDER PORTFOLIO (SWIPER.JS) - DIPERBAIKI ---
     const swiper = new Swiper('.portfolio-slider', {
         slidesPerView: 1,
         spaceBetween: 30,
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- LOGIKA UNTUK NAVIGASI AKTIF SAAT SCROLL ---
-    const navLinksDesktop = document.querySelectorAll('.navbar .nav-container nav a');
+    const navLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('section[id]');
 
     const observerOptions = {
@@ -46,28 +46,29 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
-                const activeLink = document.querySelector(`.navbar .nav-container nav a[href="#${id}"]`);
-
-                navLinksDesktop.forEach(link => link.classList.remove('active'));
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
+                document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                
+                const activeLinks = document.querySelectorAll(`nav a[href="#${id}"]`);
+                activeLinks.forEach(activeLink => {
+                    if(activeLink) activeLink.classList.add('active');
+                });
             }
         });
     }, observerOptions);
 
     sections.forEach(section => {
-        if (document.querySelector(`.navbar .nav-container nav a[href="#${section.id}"]`)) {
+        if (document.querySelector(`nav a[href="#${section.id}"]`)) {
             observer.observe(section);
         }
     });
+
 
     // --- LOGIKA UNTUK GANTI BAHASA ---
     const langSwitchers = document.querySelectorAll('.lang-switcher');
     const translatableElements = document.querySelectorAll('[data-key]');
     const langDisplays = [document.getElementById('lang-display'), document.getElementById('lang-display-mobile')];
     
-    // Kamus Terjemahan (tidak berubah)
+    // Kamus Terjemahan
     const translations = {
         en: {
             navAbout: "About",
