@@ -114,7 +114,6 @@ body.sidebar-open {
     text-align: left;
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
-    transition: background-color 0.3s ease;
 }
 .lang-dropdown button:hover {
     background-color: rgba(108, 192, 255, 0.2);
@@ -290,16 +289,16 @@ h2 {
   transform: scale(1.1);
 }
 
-/* Portfolio */
+/* Portfolio -- PERBAIKAN STRUKTURAL -- */
 .portfolio {
   background-color: #f8f9fa;
   background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%);
+  position: relative; /* Wajib untuk positioning tombol panah */
 }
 .portfolio-slider {
   width: 100%; 
   margin: 2rem 0;
-  padding: 0 50px;
-  box-sizing: border-box;
+  padding: 0; /* Padding dihapus agar slider full-width */
   z-index: 1;
 }
 .swiper-slide {
@@ -308,6 +307,8 @@ h2 {
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   overflow: hidden;
   min-height: 400px;
+  width: 80%; /* Lebar slide 80% */
+  max-width: 900px; /* Lebar maksimum slide */
 }
 .portfolio-item-slide {
   display: flex;
@@ -332,26 +333,28 @@ h2 {
   margin-top: 0;
   color: #0b1b3f;
 }
-
-/* -- PERBAIKAN FINAL DAN DEFINITIF UNTUK SLIDE TERAKHIR -- */
 .portfolio-final-slide {
-  display: flex; /* Hanya untuk centering vertikal */
-  align-items: center; /* Hanya untuk centering vertikal */
-  justify-content: flex-start; /* Hapus justify-content: center dari sini */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
   background: #e9ecef;
 }
 .final-slide-content {
   max-width: 600px;
   text-align: center;
-  width: 100%; /* Lebar relatif agar margin auto bekerja */
-  margin-left: auto; /* Kunci untuk centering horizontal */
-  margin-right: auto; /* Kunci untuk centering horizontal */
 }
 
-.swiper-button-next,
-.swiper-button-prev {
+/* Posisi baru untuk tombol panah */
+.portfolio .swiper-button-next,
+.portfolio .swiper-button-prev {
   color: #0b1b3f;
+}
+.portfolio .swiper-button-prev {
+    left: 2rem;
+}
+.portfolio .swiper-button-next {
+    right: 2rem;
 }
 .swiper-pagination-bullet-active {
   background: #0b1b3f;
@@ -411,12 +414,11 @@ footer {
   h2 { font-size: 1.8rem; }
   .hero-subtitle { font-size: 1rem; }
   .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 1.5rem; }
-  .about .text, .testimonials { padding-left: 1rem; padding-right: 1rem; }
+  .about .text, .testimonials { padding: 0; }
   .service-logos { padding: 2rem 1.5rem; }
   .portfolio-slider { padding: 0; }
-  .swiper-slide { flex-direction: column; text-align: center; min-height: auto; }
+  .swiper-slide { flex-direction: column; text-align: center; min-height: auto; width: 90% !important; }
   .swiper-button-next, .swiper-button-prev { display: none; }
-  .portfolio-item-slide, .portfolio-final-slide { width: 100% !important; margin: 0; }
   .portfolio-image { width: 100%; }
   .portfolio-image img { height: 220px; }
   .portfolio-info { text-align: center; padding: 1.5rem; }
