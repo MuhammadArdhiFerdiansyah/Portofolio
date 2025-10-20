@@ -168,14 +168,14 @@ h2 { font-size: 2.2rem; font-weight: 500; margin-bottom: 2.5rem; margin-top: 0; 
 
 /* Portfolio */
 .portfolio { background-color: #f8f9fa; background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%); }
-.portfolio-slider { max-width: 1000px; width: 100%; margin: 2rem auto; padding: 0 50px; box-sizing: border-box; position: relative; z-index: 1; }
-.swiper-slide { background: #ffffff !important; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; height: auto; }
+.portfolio-slider { max-width: 900px; width: 100%; margin: 2rem auto; padding: 0 50px; box-sizing: border-box; position: relative; z-index: 1; }
+.swiper-slide { background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; height: auto; }
 .portfolio-item-slide { display: flex; align-items: stretch; }
 .portfolio-image { flex: 0 0 50%; }
-.portfolio-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.portfolio-info { flex: 1; padding: 2rem 3rem; text-align: left; display: flex; flex-direction: column; justify-content: center;}
+.portfolio-image img { width: 100%; height: auto; display: block; }
+.portfolio-info { flex: 1; padding: 2rem 3rem; text-align: left; display: flex; flex-direction: column; justify-content: center; }
 .portfolio-info h3 { margin-top: 0; color: #0b1b3f; }
-.portfolio-final-slide { display: flex; justify-content: center; align-items: center; padding: 4rem 2rem; background: #e9ecef; min-height: 400px; }
+.portfolio-final-slide { display: flex; justify-content: center; align-items: center; padding: 4rem 2rem; background: #e9ecef; min-height: 400px; box-sizing: border-box; }
 .final-slide-content { max-width: 600px; text-align: center; }
 .swiper-button-next, .swiper-button-prev { color: #0b1b3f; }
 .swiper-pagination-bullet-active { background: #0b1b3f; }
@@ -201,26 +201,50 @@ footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
 @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-/* --- ATURAN RESPONSIVE (MOBILE) - DIPERBARUI TOTAL --- */
+/* --- ATURAN RESPONSIVE (MOBILE) - PERBAIKAN FINAL --- */
 @media (max-width: 768px) {
   .nav-container { display: none; }
   .hamburger-menu { display: block; }
-
   .navbar { padding: 0.5rem 1.5rem; }
-  
   h1 { font-size: 2rem; }
   h2 { font-size: 1.8rem; }
   .hero-subtitle { font-size: 1rem; }
-  
-  .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 1.5rem; }
+  .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 1rem; }
   .about .text, .testimonials { padding: 0 1rem; }
-  .service-logos { padding: 2rem 1.5rem; }
+  .service-logos { padding: 2rem 1rem; }
   
-  .portfolio-slider { padding: 0; max-width: 100%;}
-  .swiper-slide { flex-direction: column; text-align: center; height: auto; min-height: 0; margin: 0 !important; width: auto !important; }
-  .swiper-button-next, .swiper-button-prev { display: none; }
-  .portfolio-image { width: 100%; }
-  .portfolio-image img { height: 220px; }
-  .portfolio-info { text-align: center; padding: 1.5rem; }
-  .contact-links { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  /* Perbaikan Total Slider Portofolio Mobile */
+  .portfolio-slider { 
+    padding: 0; 
+    max-width: 100%;
+  }
+  .swiper-slide { 
+    flex-direction: column; /* Wajib untuk layout atas-bawah */
+    text-align: center;
+    height: auto; /* Izinkan tinggi slide menyesuaikan konten */
+    min-height: 0; /* Hapus tinggi minimum */
+    width: 100% !important; /* Hapus paksa lebar auto */
+    margin: 0 !important; /* Hapus semua margin */
+  }
+  .swiper-button-next, .swiper-button-prev { 
+    display: none; 
+  }
+  .portfolio-image { 
+    width: 100%; 
+  }
+  .portfolio-image img { 
+    height: 220px; 
+  }
+  .portfolio-info { 
+    text-align: center; 
+    padding: 1.5rem; 
+  }
+  .portfolio-final-slide {
+      padding: 2rem 1.5rem;
+      min-height: 0; /* Hapus tinggi minimum agar tidak terpotong */
+  }
+  .contact-links { 
+    grid-template-columns: 1fr 1fr; 
+    gap: 1rem; 
+  }
 }
