@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- LOGIKA UNTUK NAVIGASI AKTIF SAAT SCROLL ---
-    const navLinks = document.querySelectorAll('.navbar nav a'); // Hanya nav desktop
+    const navLinks = document.querySelectorAll('.navbar nav a');
     const sections = Array.from(navLinks).map(link => {
         const id = link.getAttribute('href');
         return document.querySelector(id);
@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- LOGIKA UNTUK GANTI BAHASA ---
-    // Pilih semua tombol bahasa dari kedua menu (desktop & mobile)
     const langSwitchers = document.querySelectorAll('.lang-switcher');
     const translatableElements = document.querySelectorAll('[data-key]');
     
@@ -155,14 +154,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionButtons = switcher.querySelectorAll('.lang-dropdown button');
 
         menuButton.addEventListener('click', (e) => {
-            e.stopPropagation(); // Mencegah window click event
+            e.stopPropagation();
             switcher.classList.toggle('open');
         });
 
         optionButtons.forEach(button => {
             button.addEventListener('click', () => {
                 setLanguage(button.dataset.lang);
-                // Menutup semua dropdown yang mungkin terbuka
                 langSwitchers.forEach(s => s.classList.remove('open'));
             });
         });
