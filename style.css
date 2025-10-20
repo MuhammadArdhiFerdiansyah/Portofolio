@@ -5,6 +5,7 @@ body {
   color: #333;
   line-height: 1.6;
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Mencegah scroll horizontal (garis putih) */
 }
 
 /* Navbar */
@@ -116,7 +117,7 @@ body {
 /* Hero */
 .hero {
   text-align: center;
-  padding: 6rem 1rem;
+  padding: 6rem 1.5rem;
   background: linear-gradient(rgba(11, 27, 63, 0.7), rgba(24, 46, 110, 0.7)), url('assets/hero-background.jpg');
   background-size: cover;
   background-position: center;
@@ -144,21 +145,25 @@ body {
   transition: transform 0.3s ease;
 }
 .btn:hover {
-  transform: scale(1.05); /* Efek membesar saat disentuh mouse */
+  transform: scale(1.05);
 }
-
 
 /* Sections */
 section[id] {
   scroll-margin-top: 60px;
 }
-.about, .services, .portfolio, .testimonials, .contact {
+.about, .testimonials {
   padding: 4rem 2rem;
   text-align: center;
 }
 .services, .portfolio, .contact {
-    padding-left: 0;
-    padding-right: 0;
+  padding: 4rem 0;
+  text-align: center;
+}
+h2 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
 }
 
 /* About & Testimonials Text Wrap Fix */
@@ -166,8 +171,6 @@ section[id] {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 .about {
   display: flex;
@@ -191,13 +194,13 @@ section[id] {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 2.5rem;
   padding: 2rem 3rem;
 }
 .service-logos::-webkit-scrollbar { height: 8px; }
-.service-logos::-webkit-scrollbar-track { background: #0b1b3f; }
+.service-logos::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
 .service-logos::-webkit-scrollbar-thumb { background: #6cc0ff; border-radius: 4px; }
 .service-logos img {
   width: 90px;
@@ -338,21 +341,95 @@ footer {
 @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Responsive */
+/* --- ATURAN RESPONSIVE (MOBILE) - DIPERBARUI TOTAL --- */
 @media (max-width: 768px) {
-  .navbar { padding: 0.5rem 1.5rem; }
-  .nav-container { gap: 1rem; }
-  .lang-switcher { padding-left: 0; }
-  .service-logos { padding: 2rem 1.5rem; gap: 2rem; }
-  .service-logos img { width: 100px; height: 100px; }
+  /* Perkecil padding utama navbar dan atasi overflow */
+  .navbar { 
+    padding: 0.5rem 1rem; 
+  }
+  .nav-container { 
+    gap: 1rem;
+    /* Memastikan container tidak melebihi layar */
+    width: auto;
+    overflow: hidden;
+  }
+  .navbar nav {
+    gap: 0.5rem;
+  }
+  .navbar a {
+    font-size: 0.8rem;
+    padding: 5px;
+  }
+  .lang-switcher {
+    transform: scale(0.9);
+    padding-left: 0.5rem;
+  }
+
+  /* Perkecil font di seluruh halaman */
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  body, p {
+    font-size: 0.95rem;
+  }
+
+  /* Aturan umum untuk semua section di mobile */
+  .about, .services, .portfolio, .testimonials, .contact {
+    padding: 3rem 1rem;
+  }
+  .services, .portfolio, .contact {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .about .text, .testimonials {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Atur ulang service-logos untuk mobile */
+  .service-logos {
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  /* Aturan slide portofolio untuk mobile */
   .swiper-slide {
     flex-direction: column;
     text-align: center;
     min-height: auto;
   }
-  .swiper-button-next, .swiper-button-prev { display: none; }
-  .portfolio-image { width: 100%; flex-basis: auto; align-self: auto; }
-  .portfolio-image img { height: 220px; }
-  .portfolio-info { text-align: center; padding: 2rem; }
-  .portfolio-final-slide { padding: 2rem; }
+  .swiper-button-next, .swiper-button-prev { 
+    display: none; /* Sembunyikan panah, andalkan swipe */
+  }
+  .portfolio-item-slide {
+      margin: 0 auto; /* Pusatkan slide */
+      width: 90% !important; /* Lebar slide 90% dari layar */
+  }
+  .portfolio-image { 
+    width: 100%; 
+    flex-basis: auto; 
+    align-self: auto; 
+  }
+  .portfolio-image img { 
+    height: 200px; /* Sedikit lebih kecil */
+  }
+  .portfolio-info { 
+    text-align: center; 
+    padding: 1.5rem; 
+    font-size: 0.9rem;
+  }
+  .portfolio-info h3 {
+    font-size: 1.2rem;
+  }
+  .portfolio-final-slide { 
+    width: 90% !important;
+    margin: 0 auto;
+    padding: 1.5rem; 
+  }
 }
