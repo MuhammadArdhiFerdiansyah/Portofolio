@@ -166,23 +166,18 @@ h2 { font-size: 2.2rem; font-weight: 500; margin-bottom: 2.5rem; margin-top: 0; 
 .service-logos img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; background-color: #FFA000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease; flex-shrink: 0; }
 .service-logos img:hover { transform: scale(1.1); }
 
-/* Portfolio -- FINAL DUAL-LAYOUT -- */
-/* DESKTOP-FIRST: FULL-WIDTH */
-.portfolio { background-color: #f8f9fa; background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%); position: relative; padding-bottom: 5rem; }
-.portfolio h2 { padding: 0 2rem; }
-.portfolio-slider { width: 100%; margin: 2rem 0; padding: 0; z-index: 1; }
-.swiper-slide { background: transparent !important; box-shadow: none !important; min-height: 450px; height: auto; display: flex; justify-content: center; align-items: center; }
-.slide-content-wrapper { display: flex; align-items: stretch; width: 100%; max-width: 1200px; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; }
+/* Portfolio */
+.portfolio { background-color: #f8f9fa; background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%); }
+.portfolio-slider { max-width: 900px; width: 100%; margin: 2rem auto; padding: 0 50px; box-sizing: border-box; position: relative; z-index: 1; }
+.swiper-slide { background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; height: auto; }
+.portfolio-item-slide { display: flex; align-items: stretch; }
 .portfolio-image { flex: 0 0 50%; }
-.portfolio-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.portfolio-info { flex: 1; padding: 3rem 4rem; text-align: left; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
-.portfolio-info h3 { margin-top: 0; color: #0b1b3f; font-size: 1.8rem; }
-.portfolio-info p { font-size: 1.1rem; line-height: 1.7; }
-.portfolio-final-slide { background: transparent !important; box-shadow: none !important; }
-.final-slide-content { max-width: 600px; text-align: center; background: #e9ecef; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.portfolio .swiper-button-next, .portfolio .swiper-button-prev { color: #0b1b3f; top: 50%; }
-.portfolio .swiper-button-prev { left: 2rem; }
-.portfolio .swiper-button-next { right: 2rem; }
+.portfolio-image img { width: 100%; height: auto; display: block; }
+.portfolio-info { flex: 1; padding: 2rem 3rem; text-align: left; display: flex; flex-direction: column; justify-content: center; }
+.portfolio-info h3 { margin-top: 0; color: #0b1b3f; }
+.portfolio-final-slide { display: flex; justify-content: center; align-items: center; padding: 4rem 2rem; background: #e9ecef; min-height: 400px; box-sizing: border-box; }
+.final-slide-content { max-width: 600px; text-align: center; }
+.swiper-button-next, .swiper-button-prev { color: #0b1b3f; }
 .swiper-pagination-bullet-active { background: #0b1b3f; }
 
 /* Testimonials & Contact */
@@ -206,7 +201,7 @@ footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
 @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-/* --- ATURAN RESPONSIVE (MOBILE) --- */
+/* --- ATURAN RESPONSIVE (MOBILE) - PERBAIKAN FINAL --- */
 @media (max-width: 768px) {
   .nav-container { display: none; }
   .hamburger-menu { display: block; }
@@ -216,16 +211,46 @@ footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
   .hero-subtitle { font-size: 1rem; }
   .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 1.5rem; }
   .about .text, .testimonials { padding: 0 1rem; }
+  .service-logos { padding: 2rem 1.5rem; }
   
-  /* MOBILE PORTFOLIO: KARTU TERPUSAT, STACKED */
-  .portfolio-slider { padding: 0 1rem; box-sizing: border-box; }
-  .slide-content-wrapper { flex-direction: column; text-align: center; width: 100%; }
-  .swiper-slide { min-height: auto; }
-  .swiper-button-next, .swiper-button-prev { display: none; }
-  .portfolio-image { width: 100%; }
-  .portfolio-image img { height: 220px; }
-  .portfolio-info { text-align: center; padding: 1.5rem; }
-  .portfolio-final-slide { min-height: auto; }
-  .final-slide-content { padding: 2rem 1.5rem; }
-  .contact-links { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  /* Perbaikan Total Slider Portofolio Mobile */
+  .portfolio-slider { 
+    padding: 0; 
+    max-width: 100%;
+  }
+  .swiper-slide { 
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    min-height: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .swiper-button-next, .swiper-button-prev { 
+    display: none; 
+  }
+  .portfolio-item-slide {
+    align-items: flex-start;
+  }
+  .portfolio-image { 
+    width: 100%; 
+  }
+  .portfolio-image img { 
+    height: auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .portfolio-info { 
+    text-align: center; 
+    padding: 1.5rem; 
+  }
+  .portfolio-final-slide {
+      min-height: 0;
+      padding: 2rem 1.5rem;
+  }
+  .contact-links { 
+    grid-template-columns: 1fr 1fr; 
+    gap: 1rem; 
+  }
 }
