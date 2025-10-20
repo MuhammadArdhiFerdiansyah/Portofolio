@@ -62,6 +62,7 @@ body.sidebar-open {
 /* Pilihan Bahasa Dropdown */
 .lang-switcher {
     position: relative;
+    z-index: 102; /* Pastikan di atas navbar content */
 }
 .lang-menu-button {
     display: flex;
@@ -88,7 +89,6 @@ body.sidebar-open {
     position: absolute;
     top: calc(100% + 5px);
     right: 0;
-    z-index: 101;
     background-color: #182e6e;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
@@ -114,7 +114,6 @@ body.sidebar-open {
     text-align: left;
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
-    transition: background-color 0.3s ease;
 }
 .lang-dropdown button:hover {
     background-color: rgba(108, 192, 255, 0.2);
@@ -124,7 +123,6 @@ body.sidebar-open {
     color: #0b1b3f;
     font-weight: 500;
 }
-
 
 /* Hamburger Menu & Sidebar (Mobile) */
 .hamburger-menu {
@@ -182,7 +180,6 @@ body.sidebar-open .overlay {
     visibility: visible;
 }
 
-
 /* Hero */
 .hero {
   text-align: center;
@@ -192,14 +189,8 @@ body.sidebar-open .overlay {
   background-position: center;
   color: white;
 }
-.hero h1 {
-    margin-bottom: 0.5rem;
-}
-.hero-subtitle {
-    font-size: 1.1rem;
-    margin: 0;
-    font-weight: 300;
-    letter-spacing: 0.5px;
+.hero h1, .hero-subtitle {
+    margin: 0.5rem 0;
 }
 .hero h1 span { color: #6cc0ff; }
 .btn {
@@ -218,181 +209,52 @@ body.sidebar-open .overlay {
 }
 
 /* Sections */
-section[id] {
-  scroll-margin-top: 70px;
-}
-.about, .services, .portfolio, .testimonials, .contact {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-.services, .portfolio, .contact {
-    padding-left: 0;
-    padding-right: 0;
-}
-h2 {
-    font-size: 2.2rem;
-    font-weight: 500;
-    margin-bottom: 2.5rem;
-    margin-top: 0;
-}
+section[id] { scroll-margin-top: 70px; }
+.about, .services, .portfolio, .testimonials, .contact { padding: 4rem 2rem; text-align: center; }
+.services, .portfolio, .contact { padding-left: 0; padding-right: 0; }
+h2 { font-size: 2.2rem; font-weight: 500; margin-bottom: 2.5rem; margin-top: 0; }
 
 /* About & Testimonials Text Wrap Fix */
-.about .text, .testimonials {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.about {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.about img.profile {
-  width: 100px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
+.about .text, .testimonials { max-width: 800px; margin-left: auto; margin-right: auto; }
+.about { display: flex; flex-direction: column; align-items: center; }
+.about img.profile { width: 100px; border-radius: 50%; margin-bottom: 1rem; }
 
 /* Services */
-.services {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/services-background.jpg');
-  background-size: cover;
-  background-position: center;
-  color: white;
-}
-.service-logos {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  align-items: center;
-  gap: 2.5rem;
-  padding: 2rem 0;
-}
-.service-logos::before,
-.service-logos::after {
-    content: '';
-    margin: auto;
-}
+.services { background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/services-background.jpg'); background-size: cover; background-position: center; color: white; }
+.service-logos { display: flex; flex-wrap: nowrap; overflow-x: auto; align-items: center; gap: 2.5rem; padding: 2rem 0; }
+.service-logos::before, .service-logos::after { content: ''; margin: auto; }
 .service-logos::-webkit-scrollbar { height: 8px; }
 .service-logos::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
 .service-logos::-webkit-scrollbar-thumb { background: #6cc0ff; border-radius: 4px; }
-.service-logos img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  background-color: #FFA000;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
-}
-.service-logos img:hover {
-  transform: scale(1.1);
-}
+.service-logos img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; background-color: #FFA000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease; flex-shrink: 0; }
+.service-logos img:hover { transform: scale(1.1); }
 
 /* Portfolio */
-.portfolio {
-  background-color: #f8f9fa;
-  background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%);
-}
-.portfolio-slider {
-  width: 100%; 
-  margin: 2rem 0;
-  padding: 0 50px;
-  box-sizing: border-box;
-  z-index: 1;
-}
-.swiper-slide {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  overflow: hidden;
-  min-height: 400px;
-}
-.portfolio-item-slide {
-  display: flex;
-  align-items: center;
-}
-.portfolio-image {
-  flex: 0 0 50%;
-  align-self: stretch;
-}
-.portfolio-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.portfolio-info {
-  flex: 1;
-  padding: 2rem 3rem;
-  text-align: left;
-}
-.portfolio-info h3 {
-  margin-top: 0;
-  color: #0b1b3f;
-}
-
-/* -- PERBAIKAN FINAL DAN DEFINITIF UNTUK SLIDE TERAKHIR -- */
-.portfolio-final-slide {
-  display: flex; /* Hanya untuk centering vertikal */
-  align-items: center; /* Hanya untuk centering vertikal */
-  justify-content: flex-start; /* Hapus justify-content: center dari sini */
-  padding: 2rem;
-  background: #e9ecef;
-}
-.final-slide-content {
-  max-width: 600px;
-  text-align: center;
-  width: 100%; /* Lebar relatif agar margin auto bekerja */
-  margin-left: auto; /* Kunci untuk centering horizontal */
-  margin-right: auto; /* Kunci untuk centering horizontal */
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  color: #0b1b3f;
-}
-.swiper-pagination-bullet-active {
-  background: #0b1b3f;
-}
+.portfolio { background-color: #f8f9fa; background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%); }
+.portfolio-slider { max-width: 900px; width: 100%; margin: 2rem auto; padding: 0 50px; box-sizing: border-box; position: relative; z-index: 1; }
+.swiper-slide { background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; min-height: 400px; }
+.portfolio-item-slide { display: flex; align-items: center; }
+.portfolio-image { flex: 0 0 50%; align-self: stretch; }
+.portfolio-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portfolio-info { flex: 1; padding: 2rem 3rem; text-align: left; }
+.portfolio-info h3 { margin-top: 0; color: #0b1b3f; }
+.portfolio-final-slide { display: flex; justify-content: center; align-items: center; padding: 2rem; background: #e9ecef; }
+.final-slide-content { max-width: 600px; text-align: center; }
+.swiper-button-next, .swiper-button-prev { color: #0b1b3f; }
+.swiper-pagination-bullet-active { background: #0b1b3f; }
 
 /* Testimonials & Contact */
 .testimonials { background: #ffffff; font-style: italic; }
 .testimonials .author { margin-top: 10px; font-weight: bold; }
-.contact {
-  background: linear-gradient(rgba(11, 27, 63, 0.85), rgba(24, 46, 110, 0.85)), url('assets/contact-background.jpg');
-  background-size: cover;
-  background-position: center;
-  color: white;
-}
+.contact { background: linear-gradient(rgba(11, 27, 63, 0.85), rgba(24, 46, 110, 0.85)), url('assets/contact-background.jpg'); background-size: cover; background-position: center; color: white; }
 .contact-content { max-width: 800px; margin: auto; padding: 0 2rem; }
 .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.contact-links a {
-  color: white;
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.contact-links a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-5px);
-}
+.contact-links a { color: white; text-decoration: none; background: rgba(255, 255, 255, 0.1); padding: 12px 24px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); transition: background-color 0.3s ease, transform 0.3s ease; display: flex; align-items: center; justify-content: center; }
+.contact-links a:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-5px); }
 .contact-links i { margin-right: 10px; font-size: 1.2rem; }
 
 /* Footer */
-footer {
-  background: #0b1b3f;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-}
+footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
 
 /* Animations */
 .fade-in { animation: fadeIn 1.5s ease; }
@@ -411,17 +273,13 @@ footer {
   h2 { font-size: 1.8rem; }
   .hero-subtitle { font-size: 1rem; }
   .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 1.5rem; }
-  .about .text, .testimonials { padding-left: 1rem; padding-right: 1rem; }
+  .about .text, .testimonials { padding: 0 1rem; }
   .service-logos { padding: 2rem 1.5rem; }
-  .portfolio-slider { padding: 0; }
+  .portfolio-slider { padding: 0; max-width: 100%; }
   .swiper-slide { flex-direction: column; text-align: center; min-height: auto; }
   .swiper-button-next, .swiper-button-prev { display: none; }
-  .portfolio-item-slide, .portfolio-final-slide { width: 100% !important; margin: 0; }
   .portfolio-image { width: 100%; }
   .portfolio-image img { height: 220px; }
   .portfolio-info { text-align: center; padding: 1.5rem; }
-  .contact-links {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
+  .contact-links { grid-template-columns: 1fr 1fr; gap: 1rem; }
 }
