@@ -60,10 +60,7 @@ body.sidebar-open {
 }
 
 /* Pilihan Bahasa Dropdown */
-.lang-switcher {
-    position: relative;
-    z-index: 102; /* Pastikan di atas navbar content */
-}
+.lang-switcher { position: relative; z-index: 102; }
 .lang-menu-button {
     display: flex;
     align-items: center;
@@ -82,9 +79,7 @@ body.sidebar-open {
     transition: transform 0.3s ease;
     margin-left: auto;
 }
-.lang-switcher.open .lang-menu-button i {
-    transform: rotate(180deg);
-}
+.lang-switcher.open .lang-menu-button i { transform: rotate(180deg); }
 .lang-dropdown {
     position: absolute;
     top: calc(100% + 5px);
@@ -115,25 +110,11 @@ body.sidebar-open {
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
 }
-.lang-dropdown button:hover {
-    background-color: rgba(108, 192, 255, 0.2);
-}
-.lang-dropdown button.active {
-    background-color: #6cc0ff;
-    color: #0b1b3f;
-    font-weight: 500;
-}
+.lang-dropdown button:hover { background-color: rgba(108, 192, 255, 0.2); }
+.lang-dropdown button.active { background-color: #6cc0ff; color: #0b1b3f; font-weight: 500; }
 
 /* Hamburger Menu & Sidebar (Mobile) */
-.hamburger-menu {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 1001;
-}
+.hamburger-menu { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 1001; }
 .mobile-sidebar {
     position: fixed;
     top: 0;
@@ -150,63 +131,19 @@ body.sidebar-open {
     flex-direction: column;
     gap: 2rem;
 }
-body.sidebar-open .mobile-sidebar {
-    transform: translateX(0);
-}
-.mobile-sidebar .mobile-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-.mobile-sidebar .mobile-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-body.sidebar-open .overlay {
-    opacity: 1;
-    visibility: visible;
-}
+body.sidebar-open .mobile-sidebar { transform: translateX(0); }
+.mobile-sidebar .mobile-nav { display: flex; flex-direction: column; gap: 1.5rem; }
+.mobile-sidebar .mobile-nav a { color: white; text-decoration: none; font-size: 1.2rem; }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+body.sidebar-open .overlay { opacity: 1; visibility: visible; }
 
 /* Hero */
-.hero {
-  text-align: center;
-  padding: 6rem 1.5rem;
-  background: linear-gradient(rgba(11, 27, 63, 0.7), rgba(24, 46, 110, 0.7)), url('assets/hero-background.jpg');
-  background-size: cover;
-  background-position: center;
-  color: white;
-}
-.hero h1, .hero-subtitle {
-    margin: 0.5rem 0;
-}
+.hero { text-align: center; padding: 6rem 1.5rem; background: linear-gradient(rgba(11, 27, 63, 0.7), rgba(24, 46, 110, 0.7)), url('assets/hero-background.jpg'); background-size: cover; background-position: center; color: white; }
+.hero h1 { margin-bottom: 0.5rem; }
+.hero-subtitle { font-size: 1.1rem; margin: 0; font-weight: 300; letter-spacing: 0.5px; }
 .hero h1 span { color: #6cc0ff; }
-.btn {
-  background: #6cc0ff;
-  color: #0b1b3f;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 1.5rem;
-  transition: transform 0.3s ease;
-}
-.btn:hover {
-  transform: scale(1.05);
-}
+.btn { background: #6cc0ff; color: #0b1b3f; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 1.5rem; transition: transform 0.3s ease; }
+.btn:hover { transform: scale(1.05); }
 
 /* Sections */
 section[id] { scroll-margin-top: 70px; }
@@ -229,16 +166,16 @@ h2 { font-size: 2.2rem; font-weight: 500; margin-bottom: 2.5rem; margin-top: 0; 
 .service-logos img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; background-color: #FFA000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease; flex-shrink: 0; }
 .service-logos img:hover { transform: scale(1.1); }
 
-/* Portfolio */
-.portfolio { background-color: #f8f9fa; background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%); }
+/* Portfolio -- KEMBALI KE DESAIN AWAL & DIPERBAIKI -- */
+.portfolio { background-color: #f8f9fa; background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%); position: relative; }
 .portfolio-slider { max-width: 900px; width: 100%; margin: 2rem auto; padding: 0 50px; box-sizing: border-box; position: relative; z-index: 1; }
-.swiper-slide { background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; min-height: 400px; }
+.swiper-slide { background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; min-height: auto; }
 .portfolio-item-slide { display: flex; align-items: center; }
 .portfolio-image { flex: 0 0 50%; align-self: stretch; }
 .portfolio-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .portfolio-info { flex: 1; padding: 2rem 3rem; text-align: left; }
 .portfolio-info h3 { margin-top: 0; color: #0b1b3f; }
-.portfolio-final-slide { display: flex; justify-content: center; align-items: center; padding: 2rem; background: #e9ecef; }
+.portfolio-final-slide { display: flex; justify-content: center; align-items: center; padding: 4rem 2rem; background: #e9ecef; min-height: 300px; }
 .final-slide-content { max-width: 600px; text-align: center; }
 .swiper-button-next, .swiper-button-prev { color: #0b1b3f; }
 .swiper-pagination-bullet-active { background: #0b1b3f; }
@@ -264,18 +201,22 @@ footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
 @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-/* --- ATURAN RESPONSIVE (MOBILE) --- */
+/* --- ATURAN RESPONSIVE (MOBILE) - DIPERBARUI TOTAL --- */
 @media (max-width: 768px) {
   .nav-container { display: none; }
   .hamburger-menu { display: block; }
+
   .navbar { padding: 0.5rem 1.5rem; }
+  
   h1 { font-size: 2rem; }
   h2 { font-size: 1.8rem; }
   .hero-subtitle { font-size: 1rem; }
+  
   .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 1.5rem; }
   .about .text, .testimonials { padding: 0 1rem; }
   .service-logos { padding: 2rem 1.5rem; }
-  .portfolio-slider { padding: 0; max-width: 100%; }
+  
+  .portfolio-slider { padding: 0; max-width: 100%;}
   .swiper-slide { flex-direction: column; text-align: center; min-height: auto; }
   .swiper-button-next, .swiper-button-prev { display: none; }
   .portfolio-image { width: 100%; }
