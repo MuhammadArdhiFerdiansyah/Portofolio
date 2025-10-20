@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', toggleSidebar);
     });
 
-    // --- LOGIKA UNTUK SLIDER PORTFOLIO (SWIPER.JS) - DIPERBAIKI ---
+    // --- LOGIKA UNTUK SLIDER PORTFOLIO (SWIPER.JS) ---
     const swiper = new Swiper('.portfolio-slider', {
-        slidesPerView: 1,
-        spaceBetween: 30,
+        slidesPerView: 1, // Hanya satu slide terlihat
+        spaceBetween: 0, // Tidak ada jarak antar slide untuk full-width
         loop: false,
         grabCursor: true,
         pagination: {
