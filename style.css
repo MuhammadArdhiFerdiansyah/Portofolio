@@ -168,18 +168,16 @@ h2 { font-size: 2.2rem; font-weight: 500; margin-bottom: 2.5rem; margin-top: 0; 
 
 /* Portfolio */
 .portfolio { background-color: #f8f9fa; background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%); position: relative; }
-.portfolio-slider { width: 100%; margin: 2rem 0; padding: 0; z-index: 1; }
-.swiper-slide { background: transparent !important; box-shadow: none !important; min-height: 450px; height: auto; display: flex; justify-content: center; align-items: center;}
-.slide-content-wrapper { display: flex; align-items: stretch; width: 90%; max-width: 1100px; margin: 0 auto; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; }
+.portfolio-slider { max-width: 900px; width: 100%; margin: 2rem auto; padding: 0 50px; box-sizing: border-box; position: relative; z-index: 1; }
+.swiper-slide { background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; height: auto; }
+.portfolio-item-slide { display: flex; align-items: stretch; }
 .portfolio-image { flex: 0 0 50%; }
-.portfolio-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portfolio-image img { width: 100%; height: auto; display: block; }
 .portfolio-info { flex: 1; padding: 2rem 3rem; text-align: left; display: flex; flex-direction: column; justify-content: center; }
 .portfolio-info h3 { margin-top: 0; color: #0b1b3f; }
-.portfolio-final-slide { background: transparent !important; box-shadow: none !important; }
-.final-slide-content { max-width: 600px; text-align: center; background: #e9ecef; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.portfolio .swiper-button-next, .portfolio .swiper-button-prev { color: #0b1b3f; top: 50%; }
-.portfolio .swiper-button-prev { left: 2rem; }
-.portfolio .swiper-button-next { right: 2rem; }
+.portfolio-final-slide { display: flex; justify-content: center; align-items: center; padding: 4rem 2rem; background: #e9ecef; min-height: 400px; box-sizing: border-box; }
+.final-slide-content { max-width: 600px; text-align: center; }
+.swiper-button-next, .swiper-button-prev { color: #0b1b3f; }
 .swiper-pagination-bullet-active { background: #0b1b3f; }
 
 /* Testimonials & Contact */
@@ -207,22 +205,52 @@ footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
 @media (max-width: 768px) {
   .nav-container { display: none; }
   .hamburger-menu { display: block; }
+
   .navbar { padding: 0.5rem 1.5rem; }
+  
   h1 { font-size: 2rem; }
   h2 { font-size: 1.8rem; }
   .hero-subtitle { font-size: 1rem; }
-  .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 0; } /* Hapus padding horizontal section */
-  .about .text, .testimonials, .portfolio h2 { padding-left: 1.5rem; padding-right: 1.5rem; }
   
-  /* Portfolio Mobile: Full-Width, Stacked */
-  .portfolio-slider { padding: 0; }
-  .slide-content-wrapper { display: block; width: 100%; max-width: 100%; border-radius: 0; box-shadow: none; }
-  .swiper-slide { min-height: auto; background: #ffffff !important; box-shadow: none !important; border-radius: 0 !important; }
-  .swiper-button-next, .swiper-button-prev { display: none; }
-  .portfolio-image { width: 100%; }
-  .portfolio-image img { height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
-  .portfolio-info { text-align: center; padding: 1.5rem; }
-  .portfolio-final-slide { min-height: auto; background: #e9ecef !important; }
-  .final-slide-content { padding: 2rem 1.5rem; }
-  .contact-links { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .about, .services, .portfolio, .testimonials, .contact { padding: 3rem 1.5rem; }
+  .about .text, .testimonials { padding: 0 1rem; }
+  .service-logos { padding: 2rem 1.5rem; }
+  
+  /* Perbaikan Total Slider Portofolio Mobile */
+  .portfolio-slider { 
+    padding: 0; 
+    max-width: 100%;
+  }
+  .swiper-slide {
+    height: auto;
+    min-height: 0;
+  }
+  .portfolio-item-slide {
+      flex-direction: column; /* PAKSA layout jadi atas-bawah */
+      text-align: center;
+  }
+  .swiper-button-next, .swiper-button-prev { 
+    display: none; 
+  }
+  .portfolio-image { 
+    width: 100%; 
+  }
+  .portfolio-image img { 
+    height: auto; /* KUNCI agar gambar tidak terpotong */
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Menjaga rasio gambar tetap baik */
+    object-fit: cover;
+  }
+  .portfolio-info { 
+    text-align: center; 
+    padding: 1.5rem; 
+  }
+  .portfolio-final-slide {
+      min-height: 0;
+      padding: 2rem 1.5rem;
+  }
+  .contact-links { 
+    grid-template-columns: 1fr 1fr; 
+    gap: 1rem; 
+  }
 }
