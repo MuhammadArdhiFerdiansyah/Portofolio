@@ -1,173 +1,435 @@
-document.addEventListener('DOMContentLoaded', () => {
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #ffffff;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Mencegah scroll horizontal (garis putih) */
+}
 
-    // --- LOGIKA UNTUK SLIDER PORTFOLIO (SWIPER.JS) ---
-    const swiper = new Swiper('.portfolio-slider', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: false,
-        grabCursor: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 3rem;
+  background-color: #0b1b3f;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo img {
+  height: 30px;
+  width: auto;
+}
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.navbar nav {
+    display: flex;
+    gap: 1.5rem;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 5px;
+}
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #6cc0ff;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+.navbar a.active::after,
+.navbar a:hover::after {
+    transform: scaleX(1);
+}
 
-    // --- LOGIKA UNTUK NAVIGASI AKTIF SAAT SCROLL (DIPERBAIKI LAGI) ---
-    const navLinks = document.querySelectorAll('.navbar nav a');
-    
-    const sections = Array.from(navLinks).map(link => {
-        const id = link.getAttribute('href');
-        return document.querySelector(id);
-    }).filter(section => section !== null);
+/* Pilihan Bahasa Dropdown */
+.lang-switcher {
+    position: relative;
+}
+.lang-menu-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+.lang-menu-button i {
+    transition: transform 0.3s ease;
+}
+.lang-switcher.open .lang-menu-button i {
+    transform: rotate(180deg);
+}
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background-color: #182e6e;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+.lang-switcher.open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.lang-dropdown button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+.lang-dropdown button:hover {
+    background-color: rgba(108, 192, 255, 0.2);
+}
 
-    window.addEventListener('scroll', () => {
-        let currentSectionId = '';
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 6rem 1.5rem;
+  background: linear-gradient(rgba(11, 27, 63, 0.7), rgba(24, 46, 110, 0.7)), url('assets/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+.hero h1 {
+    margin-bottom: 0.5rem;
+}
+.hero-subtitle {
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+.hero h1 span { color: #6cc0ff; }
+.btn {
+  background: #6cc0ff;
+  color: #0b1b3f;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 1.5rem;
+  transition: transform 0.3s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop - (sectionHeight / 2) ) {
-                currentSectionId = section.getAttribute('id');
-            }
-        });
+/* Sections */
+section[id] {
+  scroll-margin-top: 60px;
+}
+.about, .testimonials {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.services, .portfolio, .contact {
+  padding: 4rem 0;
+  text-align: center;
+}
+h2 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
 
-        // --- PERBAIKAN KHUSUS UNTUK SECTION TERAKHIR (CONTACT) ---
-        // Cek jika pengguna sudah scroll sampai paling bawah halaman
-        const scrollAtBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2;
-        
-        if (scrollAtBottom) {
-            // Jika ya, paksa section aktif menjadi yang terakhir
-            currentSectionId = sections[sections.length - 1].getAttribute('id');
-        }
-        // -----------------------------------------------------------
+/* About & Testimonials Text Wrap Fix */
+.about .text, .testimonials {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about img.profile {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
 
-        navLinks.forEach(a => {
-            a.classList.remove('active');
-            if (a.getAttribute('href') === '#' + currentSectionId) {
-                a.classList.add('active');
-            }
-        });
-    });
+/* Services */
+.services {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/services-background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+.service-logos {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2rem 3rem;
+}
+.service-logos::-webkit-scrollbar { height: 8px; }
+.service-logos::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+.service-logos::-webkit-scrollbar-thumb { background: #6cc0ff; border-radius: 4px; }
+.service-logos img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #FFA000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.service-logos img:hover {
+  transform: scale(1.1);
+}
 
+/* Portfolio */
+.portfolio {
+  background-color: #f8f9fa;
+  background-image: linear-gradient(to top, #e9ecef 0%, #f8f9fa 100%);
+}
+.portfolio-slider {
+  width: 100%; 
+  margin: 2rem 0;
+}
+.swiper-slide {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  min-height: 400px;
+}
+.portfolio-item-slide {
+  display: flex;
+  align-items: center;
+}
+.portfolio-image {
+  flex: 0 0 50%;
+  align-self: stretch;
+}
+.portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.portfolio-info {
+  flex: 1;
+  padding: 2rem 3rem;
+  text-align: left;
+}
+.portfolio-info h3 {
+  margin-top: 0;
+  color: #0b1b3f;
+}
+.portfolio-final-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: #e9ecef;
+}
+.final-slide-content {
+  max-width: 600px;
+  text-align: center;
+}
 
-    // --- LOGIKA UNTUK GANTI BAHASA ---
-    const langSwitcher = document.querySelector('.lang-switcher');
-    const langMenuButton = document.querySelector('.lang-menu-button');
-    const langOptionButtons = document.querySelectorAll('.lang-dropdown button');
-    const translatableElements = document.querySelectorAll('[data-key]');
-    
-    // Kamus Terjemahan
-    const translations = {
-        en: {
-            navAbout: "About",
-            navServices: "Services",
-            navPortfolio: "Portfolio",
-            navContact: "Contact",
-            navLanguage: "Language",
-            heroTitle: "Hi, I'm <span>MUHAMMAD ARDHI FERDIANSYAH</span>",
-            heroSubtitle: "Data Entry & Virtual Assistant / Admin Support",
-            heroButton: "Hire Me on Upwork",
-            aboutTitle: "About Me",
-            aboutText: "I have an academic background in Development Economics with a strong interest in data entry, administrative tasks, and data management. I am familiar with using Microsoft Excel, Word, PowerPoint, Power BI, and Google Sheets to process and present data effectively. I am detail-oriented, organized, and committed to completing every task accurately and on time. I also have a strong willingness to learn and enjoy exploring new skills to improve my work quality.",
-            servicesTitle: "My Services",
-            portfolioTitle: "Portfolio",
-            p1Title: "Data Cleaning",
-            p1Desc: "Cleaned messy CSV data and organized it into a neat and structured table for reporting purposes. In this example, I used a global freelancer dataset and reformatted it using Microsoft Excel to make it easier to read and analyze.",
-            p2Title: "PDF to Excel",
-            p2Desc: "Converted and structured data from PDF files into Excel with accuracy and consistency. This project uses IMF data (Global Economy: Tenuous Resilience amid Persistent Uncertainty). I extracted the data using Microsoft Power BI, then organized it in Excel for clearer presentation and analysis.",
-            p3Title: "Web Research",
-            p3Desc: "Collected company information from various online sources, including websites, social media, email, and phone numbers. In this example, I researched 15 cafés in Jakarta, Indonesia, and compiled their details such as name, address, Instagram account, Google Maps link, and café type into an Excel sheet.",
-            p4Title: "Weekly Report",
-            p4Desc: "Created a weekly report template to help companies monitor project progress. This example uses fictional data, with a report format I designed myself to display weekly activities and status updates in an organized way.",
-            p5Title: "Organized Schedule",
-            p5Desc: "Managed and arranged meeting schedules for company or client activities. This example uses a fictional client meeting schedule that I structured in a calendar-style format — suitable for administrative or virtual assistant roles.",
-            p6Title: "Data Categorizing / Tagging",
-            p6Desc: "Classified product data and added relevant tags for easier analysis and organization. In this project, I used 200 product entries from an Amazon store and assigned each item with appropriate categories and tags for better data grouping.",
-            p7Title: "Data Crosscheck",
-            p7Desc: "Verified and compared data across multiple datasets to ensure accuracy and consistency. In this example, I compared movie lists from IMDb for the years 2023 and 2024 to identify duplicates and differences using Excel formulas such as VLOOKUP and COUNTIF.",
-            p8Title: "See More",
-            p8Desc: "All the portfolios above are examples, and I can adjust them based on the client’s requirements. If you would like to see my portfolio in more detail, please visit the link below.",
-            p8Button: "Open Google Drive",
-            testimonialsTitle: "Testimonials",
-            testimonialsText: '"I am currently building my professional experience and open to collaborating with my first clients. I’m committed to delivering the best results and truly appreciate any feedback or testimonials given."',
-            contactTitle: "Contact Me",
-            contactText: "I'm open to discussing new projects and opportunities. Feel free to reach out!",
-            contactEmail: "Email Me"
-        },
-        id: {
-            navAbout: "Tentang",
-            navServices: "Layanan",
-            navPortfolio: "Portofolio",
-            navContact: "Kontak",
-            navLanguage: "Bahasa",
-            heroTitle: "Hai, saya <span>MUHAMMAD ARDHI FERDIANSYAH</span>",
-            heroSubtitle: "Entri Data & Asisten Virtual / Dukungan Admin",
-            heroButton: "Rekrut Saya di Upwork",
-            aboutTitle: "Tentang Saya",
-            aboutText: "Saya memiliki latar belakang akademis di bidang Ekonomi Pembangunan dengan minat kuat pada entri data, tugas administratif, dan manajemen data. Saya terbiasa menggunakan Microsoft Excel, Word, PowerPoint, Power BI, dan Google Sheets untuk memproses dan menyajikan data secara efektif. Saya berorientasi pada detail, terorganisir, dan berkomitmen untuk menyelesaikan setiap tugas secara akurat dan tepat waktu. Saya juga memiliki kemauan belajar yang kuat dan senang mengeksplorasi keterampilan baru untuk meningkatkan kualitas kerja saya.",
-            servicesTitle: "Layanan Saya",
-            portfolioTitle: "Portofolio",
-            p1Title: "Pembersihan Data",
-            p1Desc: "Membersihkan data CSV yang berantakan dan mengaturnya ke dalam tabel yang rapi dan terstruktur untuk keperluan pelaporan. Dalam contoh ini, saya menggunakan dataset freelancer global dan memformatnya kembali menggunakan Microsoft Excel agar lebih mudah dibaca dan dianalisis.",
-            p2Title: "PDF ke Excel",
-            p2Desc: "Mengubah dan menyusun data dari file PDF ke dalam Excel dengan akurasi dan konsistensi. Proyek ini menggunakan data IMF (Ekonomi Global: Ketahanan Tipis di Tengah Ketidakpastian yang Berkelanjutan). Saya mengekstrak data menggunakan Microsoft Power BI, lalu mengaturnya di Excel untuk presentasi dan analisis yang lebih jelas.",
-            p3Title: "Riset Web",
-            p3Desc: "Mengumpulkan informasi perusahaan dari berbagai sumber online, termasuk situs web, media sosial, email, dan nomor telepon. Dalam contoh ini, saya meneliti 15 kafe di Jakarta, Indonesia, dan menyusun detail mereka seperti nama, alamat, akun Instagram, tautan Google Maps, dan jenis kafe ke dalam lembar Excel.",
-            p4Title: "Laporan Mingguan",
-            p4Desc: "Membuat templat laporan mingguan untuk membantu perusahaan memantau kemajuan proyek. Contoh ini menggunakan data fiktif, dengan format laporan yang saya rancang sendiri untuk menampilkan aktivitas mingguan dan pembaruan status secara terorganisir.",
-            p5Title: "Jadwal Terorganisir",
-            p5Desc: "Mengelola dan mengatur jadwal pertemuan untuk kegiatan perusahaan atau klien. Contoh ini menggunakan jadwal pertemuan klien fiktif yang saya susun dalam format gaya kalender — cocok untuk peran administratif atau asisten virtual.",
-            p6Title: "Kategorisasi / Penandaan Data",
-            p6Desc: "Mengklasifikasikan data produk dan menambahkan tag yang relevan untuk analisis dan organisasi yang lebih mudah. Dalam proyek ini, saya menggunakan 200 entri produk dari toko Amazon dan memberikan setiap item kategori dan tag yang sesuai untuk pengelompokan data yang lebih baik.",
-            p7Title: "Pengecekan Silang Data",
-            p7Desc: "Memverifikasi dan membandingkan data di beberapa dataset untuk memastikan akurasi dan konsistensi. Dalam contoh ini, saya membandingkan daftar film dari IMDb untuk tahun 2023 dan 2024 untuk mengidentifikasi duplikat dan perbedaan menggunakan rumus Excel seperti VLOOKUP dan COUNTIF.",
-            p8Title: "Lihat Lebih Banyak",
-            p8Desc: "Semua portofolio di atas adalah contoh, dan saya dapat menyesuaikannya berdasarkan kebutuhan klien. Jika Anda ingin melihat portofolio saya lebih detail, silakan kunjungi tautan di bawah ini.",
-            p8Button: "Buka Google Drive",
-            testimonialsTitle: "Testimoni",
-            testimonialsText: '"Saat ini saya sedang membangun pengalaman profesional dan terbuka untuk berkolaborasi dengan klien pertama saya. Saya berkomitmen untuk memberikan hasil terbaik dan sangat menghargai setiap masukan atau testimoni yang diberikan."',
-            contactTitle: "Hubungi Saya",
-            contactText: "Saya terbuka untuk mendiskusikan proyek dan peluang baru. Jangan ragu untuk menghubungi!",
-            contactEmail: "Email Saya"
-        }
-    };
+.swiper-button-next,
+.swiper-button-prev {
+  color: #0b1b3f;
+}
+.swiper-pagination-bullet-active {
+  background: #0b1b3f;
+}
 
-    const setLanguage = (lang) => {
-        translatableElements.forEach(el => {
-            const key = el.dataset.key;
-            if (translations[lang] && translations[lang][key]) {
-                el.innerHTML = translations[lang][key];
-            }
-        });
-        localStorage.setItem('lang', lang);
-    };
+/* Testimonials */
+.testimonials {
+  background: #ffffff;
+  font-style: italic;
+}
+.testimonials .author {
+  margin-top: 10px;
+  font-weight: bold;
+}
 
-    langMenuButton.addEventListener('click', () => {
-        langSwitcher.classList.toggle('open');
-    });
+/* Contact */
+.contact {
+  background: linear-gradient(rgba(11, 27, 63, 0.85), rgba(24, 46, 110, 0.85)), url('assets/contact-background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+.contact-content {
+  max-width: 800px;
+  margin: auto;
+  padding: 0 2rem;
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.contact-links a {
+  color: white;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+.contact-links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+.contact-links i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
 
-    langOptionButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            setLanguage(button.dataset.lang);
-            langSwitcher.classList.remove('open');
-        });
-    });
+/* Footer */
+footer {
+  background: #0b1b3f;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+}
 
-    window.addEventListener('click', (e) => {
-        if (!langSwitcher.contains(e.target)) {
-            langSwitcher.classList.remove('open');
-        }
-    });
+/* Animations */
+.fade-in { animation: fadeIn 1.5s ease; }
+.slide-up { animation: slideUp 1.s ease; }
+.fade-up { animation: fadeUp 1.5s ease; }
 
-    let userLang = localStorage.getItem('lang');
-    if (!userLang) {
-        const browserLang = navigator.language.slice(0, 2);
-        userLang = (browserLang === 'id') ? 'id' : 'en';
-    }
-    setLanguage(userLang);
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-});
+/* --- ATURAN RESPONSIVE (MOBILE) - DIPERBARUI TOTAL --- */
+@media (max-width: 768px) {
+  /* Perkecil padding utama navbar dan atasi overflow */
+  .navbar { 
+    padding: 0.5rem 1rem; 
+  }
+  .nav-container { 
+    gap: 1rem;
+    /* Memastikan container tidak melebihi layar */
+    width: auto;
+    overflow: hidden;
+  }
+  .navbar nav {
+    gap: 0.5rem;
+  }
+  .navbar a {
+    font-size: 0.8rem;
+    padding: 5px;
+  }
+  .lang-switcher {
+    transform: scale(0.9);
+    padding-left: 0.5rem;
+  }
+
+  /* Perkecil font di seluruh halaman */
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  body, p {
+    font-size: 0.95rem;
+  }
+
+  /* Aturan umum untuk semua section di mobile */
+  .about, .services, .portfolio, .testimonials, .contact {
+    padding: 3rem 1rem;
+  }
+  .services, .portfolio, .contact {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .about .text, .testimonials {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Atur ulang service-logos untuk mobile */
+  .service-logos {
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  /* Aturan slide portofolio untuk mobile */
+  .swiper-slide {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+  }
+  .swiper-button-next, .swiper-button-prev { 
+    display: none; /* Sembunyikan panah, andalkan swipe */
+  }
+  .portfolio-item-slide {
+      margin: 0 auto; /* Pusatkan slide */
+      width: 90% !important; /* Lebar slide 90% dari layar */
+  }
+  .portfolio-image { 
+    width: 100%; 
+    flex-basis: auto; 
+    align-self: auto; 
+  }
+  .portfolio-image img { 
+    height: 200px; /* Sedikit lebih kecil */
+  }
+  .portfolio-info { 
+    text-align: center; 
+    padding: 1.5rem; 
+    font-size: 0.9rem;
+  }
+  .portfolio-info h3 {
+    font-size: 1.2rem;
+  }
+  .portfolio-final-slide { 
+    width: 90% !important;
+    margin: 0 auto;
+    padding: 1.5rem; 
+  }
+}
