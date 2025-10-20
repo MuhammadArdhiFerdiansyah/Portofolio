@@ -32,32 +32,37 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    // --- LOGIKA UNTUK NAVIGASI AKTIF SAAT SCROLL ---
+    // --- LOGIKA BARU & AKURAT UNTUK NAVIGASI AKTIF SAAT SCROLL ---
     const navLinks = document.querySelectorAll('.navbar nav a');
-    const sections = Array.from(navLinks).map(link => {
-        const id = link.getAttribute('href');
-        return document.querySelector(id);
-    }).filter(section => section !== null);
+    const sections = document.querySelectorAll('section[id]');
 
-    window.addEventListener('scroll', () => {
-        let currentSectionId = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 70) {
-                currentSectionId = section.getAttribute('id');
+    const observerOptions = {
+        root: null,
+        rootMargin: '-80px 0px -50% 0px', // (atas, kanan, bawah, kiri)
+        threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                const activeLink = document.querySelector(`.navbar nav a[href="#${id}"]`);
+
+                navLinks.forEach(link => link.classList.remove('active'));
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
             }
         });
-        const scrollAtBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2;
-        if (scrollAtBottom) {
-            currentSectionId = sections[sections.length - 1].getAttribute('id');
+    }, observerOptions);
+
+    sections.forEach(section => {
+        // Hanya amati section yang punya link di navigasi
+        if (document.querySelector(`.navbar nav a[href="#${section.id}"]`)) {
+            observer.observe(section);
         }
-        navLinks.forEach(a => {
-            a.classList.remove('active');
-            if (a.getAttribute('href') === '#' + currentSectionId) {
-                a.classList.add('active');
-            }
-        });
     });
+
 
     // --- LOGIKA UNTUK GANTI BAHASA ---
     const langSwitchers = document.querySelectorAll('.lang-switcher');
@@ -146,14 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Update tampilan tombol dropdown utama
         langDisplays.forEach(display => {
             if (display) {
                 display.textContent = lang.toUpperCase();
             }
         });
 
-        // Update tombol aktif di dalam dropdown
         langSwitchers.forEach(switcher => {
             const optionButtons = switcher.querySelectorAll('.lang-dropdown button');
             optionButtons.forEach(btn => {
@@ -173,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         menuButton.addEventListener('click', (e) => {
             e.stopPropagation();
-            // Tutup dropdown lain sebelum membuka yang ini
             langSwitchers.forEach(s => {
                 if (s !== switcher) s.classList.remove('open');
             });
@@ -183,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         optionButtons.forEach(button => {
             button.addEventListener('click', () => {
                 setLanguage(button.dataset.lang);
-                // Menutup semua dropdown
                 langSwitchers.forEach(s => s.classList.remove('open'));
             });
         });
