@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             p7Title: "Data Crosscheck",
             p7Desc: "Verified and compared data across multiple datasets to ensure accuracy and consistency. In this example, I compared movie lists from IMDb for the years 2023 and 2024 to identify duplicates and differences using Excel formulas such as VLOOKUP and COUNTIF.",
             p8Title: "See More",
-            p8Desc: "All the portfolios above are examples, and I can adjust them based on the client’s requirements. If you would like to see my portfolio in more detail, please visit the link below.",
+            p8Desc: "All of the portfolios earlier are just examples, and I can customize them based on the client’s needs. If you’d like to see my portfolio in more detail, please visit the link below.",
             p8Button: "Google Drive",
             testimonialsTitle: "Testimonials",
             testimonialsText: '"I am currently building my professional experience and open to collaborating with my first clients. I’m committed to delivering the best results and truly appreciate any feedback or testimonials given."',
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             p7Title: "Pengecekan Silang Data",
             p7Desc: "Memverifikasi dan membandingkan data di beberapa dataset untuk memastikan akurasi dan konsistensi. Dalam contoh ini, saya membandingkan daftar film dari IMDb untuk tahun 2023 dan 2024 untuk mengidentifikasi duplikat dan perbedaan menggunakan rumus Excel seperti VLOOKUP dan COUNTIF.",
             p8Title: "Lihat Lebih Banyak",
-            p8Desc: "Semua portofolio di atas adalah contoh, dan saya dapat menyesuaikannya berdasarkan kebutuhan klien. Jika Anda ingin melihat portofolio saya lebih detail, silakan kunjungi tautan di bawah ini.",
+            p8Desc: "Semua portofolio sebelumnya hanyalah contoh, dan saya dapat menyesuaikannya berdasarkan kebutuhan klien. Jika Anda ingin melihat portofolio saya lebih detail, silakan kunjungi tautan di bawah ini.",
             p8Button: "Google Drive",
             testimonialsTitle: "Testimoni",
             testimonialsText: '"Saat ini saya sedang membangun pengalaman profesional dan terbuka untuk berkolaborasi dengan klien pertama saya. Saya berkomitmen untuk memberikan hasil terbaik dan sangat menghargai setiap masukan atau testimoni yang diberikan."',
@@ -202,4 +202,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setLanguage(userLang);
 });
+
 
