@@ -196,7 +196,7 @@ h2 { font-size: 2.2rem; font-weight: 500; margin-bottom: 2.5rem; margin-top: 0; 
 .contact-links i { margin-right: 10px; font-size: 1.2rem; }
 
 /* Footer */
-footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
+footer { background: #0b1b3f; color: white; text-align: center; padding: 0.5rem; }
 
 /* Animations */
 .fade-in { animation: fadeIn 1.5s ease; }
@@ -233,3 +233,4 @@ footer { background: #0b1b3f; color: white; text-align: center; padding: 1rem; }
   .final-slide-content { padding: 2rem 1.5rem; }
   .contact-links { grid-template-columns: 1fr 1fr; gap: 1rem; }
 }
+
